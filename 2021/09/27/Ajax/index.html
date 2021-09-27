@@ -6,13 +6,15 @@
   
   <title>Ajax | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="article">
+  <meta name="description" content="Ajax1. 过程12345678910const xhr &#x3D; new XMLHttpRequest()xhr.open(&amp;#x27;get&amp;#x27;, url, true)xhr.send()xhr.onreadystatechange &#x3D; function() &amp;#123;	if(xhr.readyState &#x3D;&#x3D;&#x3D; 4) &amp;#123;		if(xhr.status &#x3D;&#x3D;&#x3D; 200) &amp;#1">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Ajax">
 <meta property="og:url" content="http://example.com/2021/09/27/Ajax/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Ajax1. 过程12345678910const xhr &#x3D; new XMLHttpRequest()xhr.open(&amp;#x27;get&amp;#x27;, url, true)xhr.send()xhr.onreadystatechange &#x3D; function() &amp;#123;	if(xhr.readyState &#x3D;&#x3D;&#x3D; 4) &amp;#123;		if(xhr.status &#x3D;&#x3D;&#x3D; 200) &amp;#1">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-27T13:42:46.000Z">
-<meta property="article:modified_time" content="2021-09-27T13:42:46.450Z">
+<meta property="article:modified_time" content="2021-09-27T13:50:22.283Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -93,7 +95,69 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><h2 id="1-过程"><a href="#1-过程" class="headerlink" title="1. 过程"></a>1. 过程</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">&#x27;get&#x27;</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.send()</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">			<span class="built_in">console</span>.log(xhr.responseText)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-实例属性"><a href="#2-实例属性" class="headerlink" title="2. 实例属性"></a>2. 实例属性</h2><h4 id="2-1-readyState"><a href="#2-1-readyState" class="headerlink" title="2.1 readyState"></a>2.1 readyState</h4><ul>
+<li>0，表示 XMLHttpRequest 实例已经生成，但是实例的<code>open()</code>方法还没有被调用。</li>
+<li>1，表示<code>open()</code>方法已经调用，但是实例的<code>send()</code>方法还没有调用，仍然可以使用实例的<code>setRequestHeader()</code>方法，设定 HTTP 请求的头信息。</li>
+<li>2，表示实例的<code>send()</code>方法已经调用，并且服务器返回的头信息和状态码已经收到。</li>
+<li>3，表示正在接收服务器传来的数据体（body 部分）。这时，如果实例的<code>responseType</code>属性等于<code>text</code>或者空字符串，<code>responseText</code>属性就会包含已经收到的部分信息。</li>
+<li>4，表示服务器返回的数据已经完全接收，或者本次接收已经失败。</li>
+</ul>
+<h4 id="2-2-onreadytstatechange"><a href="#2-2-onreadytstatechange" class="headerlink" title="2.2 onreadytstatechange"></a>2.2 onreadytstatechange</h4><h4 id="2-3-xhr-response-xhr-responseText"><a href="#2-3-xhr-response-xhr-responseText" class="headerlink" title="2.3 xhr.response === xhr.responseText"></a>2.3 xhr.response === xhr.responseText</h4><h4 id="2-4-xhr-responseType"><a href="#2-4-xhr-responseType" class="headerlink" title="2.4 xhr.responseType"></a>2.4 xhr.responseType</h4><p>返回类型是xhr.responseType (该属性可写，在open之后，send之前)</p>
+<ul>
+<li>”“（空字符串）：等同于<code>text</code>，表示服务器返回文本数据。</li>
+<li>“arraybuffer”：ArrayBuffer 对象，表示服务器返回二进制数组。</li>
+<li>“blob”：Blob 对象，表示服务器返回二进制对象。</li>
+<li>“document”：Document 对象，表示服务器返回一个文档对象。</li>
+<li>“json”：JSON 对象。</li>
+<li>“text”：字符串</li>
+</ul>
+<h4 id="2-5-xhr-responseXML"><a href="#2-5-xhr-responseXML" class="headerlink" title="2.5 xhr.responseXML"></a>2.5 xhr.responseXML</h4><p>返回从服务器接受到的HTML或XML文档</p>
+<p>前提：responseType = ‘document’  （是 HTTP 回应的Content-Type头信息等于text/xml或application/xml）</p>
+<h4 id="2-6-xhr-responseURL"><a href="#2-6-xhr-responseURL" class="headerlink" title="2.6 xhr.responseURL"></a>2.6 xhr.responseURL</h4><p>发送数据的的服务器的网址。</p>
+<p>这个属性的值与open()方法指定的请求网址不一定相同</p>
+<h4 id="2-7-status-statusText"><a href="#2-7-status-statusText" class="headerlink" title="2.7 status statusText"></a>2.7 status statusText</h4><h4 id="2-8-xhr-timeout-amp-amp-xhr-ontimeout"><a href="#2-8-xhr-timeout-amp-amp-xhr-ontimeout" class="headerlink" title="2.8 xhr.timeout &amp;&amp; xhr.ontimeout"></a>2.8 xhr.timeout &amp;&amp; xhr.ontimeout</h4><p>timeout设置超时的秒数， ontimeout设置超时时对应的操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xhr.timeout = <span class="number">100</span></span><br><span class="line">xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;超时&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-9-事件监听属性"><a href="#2-9-事件监听属性" class="headerlink" title="2.9 事件监听属性"></a>2.9 事件监听属性</h4><ul>
+<li>XMLHttpRequest.onloadstart：loadstart 事件（HTTP 请求发出）的监听函数</li>
+<li>XMLHttpRequest.onprogress：progress事件（正在发送和加载数据）的监听函数</li>
+<li>XMLHttpRequest.onabort：abort 事件（请求中止，比如用户调用了<code>abort()</code>方法）的监听函数</li>
+<li>XMLHttpRequest.onerror：error 事件（请求失败）的监听函数</li>
+<li>XMLHttpRequest.onload：load 事件（请求成功完成）的监听函数</li>
+<li>XMLHttpRequest.ontimeout：timeout 事件（用户指定的时限超过了，请求还未完成）的监听函数</li>
+<li>XMLHttpRequest.onloadend：loadend 事件（请求完成，不管成功或失败）的监听函数</li>
+</ul>
+<p>onprogress示例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有三个参数 e.total返回的总数据量 e.loaded已传输的数据量 e.lengthComputable 进度是否可以计算</span></span><br><span class="line">xhr.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e, <span class="string">&#x27;111111&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-10-withCredentials"><a href="#2-10-withCredentials" class="headerlink" title="2.10 withCredentials"></a>2.10 withCredentials</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.withCredentials = <span class="literal">true</span></span><br><span class="line"><span class="comment">//表明跨域请求时，请求中会带有cookie</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-11-upload"><a href="#2-11-upload" class="headerlink" title="2.11 upload"></a>2.11 upload</h4><p>upload是指上传文件。xhr.upload返回的是对象，这个对象有各种监听事件：loadstart、loadend、load、abort、error、progress、timeout</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;/server&#x27;</span>, <span class="literal">true</span>)</span><br><span class="line">xhr.upload.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(e.total, e.loaded)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-实例方法"><a href="#3-实例方法" class="headerlink" title="3.实例方法"></a>3.实例方法</h2><h4 id="3-1-open"><a href="#3-1-open" class="headerlink" title="3.1 open()"></a>3.1 open()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> open(</span><br><span class="line">   string method,</span><br><span class="line">   string url,</span><br><span class="line">   optional boolean <span class="keyword">async</span>,</span><br><span class="line">   optional string user,</span><br><span class="line">   optional string password</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>method</code>：表示 HTTP 动词方法，比如<code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code>、<code>HEAD</code>等。</li>
+<li><code>url</code>: 表示请求发送目标 URL。</li>
+<li><code>async</code>: 布尔值，**表示请求是否为异步，默认为<code>true</code>**。如果设为<code>false</code>，则<code>send()</code>方法只有等到收到服务器返回了结果，才会进行下一步操作。该参数可选。由于同步 AJAX 请求会造成浏览器失去响应，许多浏览器已经禁止在主线程使用，只允许 Worker 里面使用。所以，这个参数轻易不应该设为<code>false</code>。</li>
+<li><code>user</code>：表示用于认证的用户名，默认为空字符串。该参数可选。</li>
+<li><code>password</code>：表示用于认证的密码，默认为空字符串。该参数可选。</li>
+</ul>
+<h4 id="3-2-send-objects"><a href="#3-2-send-objects" class="headerlink" title="3.2 send(objects)"></a>3.2 send(objects)</h4><p>objects 选填，表示请求头带的参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;/server&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> data = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&#x27;lixin&#x27;</span>,</span><br><span class="line">	<span class="attr">age</span>: <span class="number">23</span></span><br><span class="line">&#125;</span><br><span class="line">xhr.send(data)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-setRequestHeader"><a href="#3-3-setRequestHeader" class="headerlink" title="3.3 setRequestHeader()"></a>3.3 setRequestHeader()</h4><p>设置发送的请求头，必须在open之后，send之前</p>
+<h4 id="3-4-overrideMimeType"><a href="#3-4-overrideMimeType" class="headerlink" title="3.4 overrideMimeType()"></a>3.4 overrideMimeType()</h4><p>当获取不到服务器返回的信息时，改变返回数据格式，必须在open之后，send之前</p>
+<h4 id="3-5-getResponseHeader"><a href="#3-5-getResponseHeader" class="headerlink" title="3.5 getResponseHeader()"></a>3.5 getResponseHeader()</h4><p><code>xhr.getResponseHeader(&#39;Last-Modified&#39;)</code></p>
+<h4 id="3-6-getAllResponseHeader"><a href="#3-6-getAllResponseHeader" class="headerlink" title="3.6 getAllResponseHeader()"></a>3.6 getAllResponseHeader()</h4><h4 id="3-7-abort"><a href="#3-7-abort" class="headerlink" title="3.7 abort()"></a>3.7 abort()</h4><p>终止请求</p>
+<h2 id="4-实例事件"><a href="#4-实例事件" class="headerlink" title="4.实例事件"></a>4.实例事件</h2><h4 id="4-1-readyStateChange事件"><a href="#4-1-readyStateChange事件" class="headerlink" title="4.1 readyStateChange事件"></a>4.1 readyStateChange事件</h4><h4 id="4-2-progress事件"><a href="#4-2-progress事件" class="headerlink" title="4.2 progress事件"></a>4.2 progress事件</h4><h4 id="4-3-load-error-abort-loadend"><a href="#4-3-load-error-abort-loadend" class="headerlink" title="4.3 load error abort loadend"></a>4.3 load error abort loadend</h4><p>load表示数据接受完毕</p>
+<p>error表示请求出错</p>
+<p>abort 请求中断</p>
+<p>loadend 请求结束</p>
+
       
     </div>
     <footer class="article-footer">
