@@ -71,6 +71,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue3中如何使用fabric及本地调用json文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/28/vue3%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8fabric%E5%8F%8A%E6%9C%AC%E5%9C%B0%E8%B0%83%E7%94%A8json%E6%96%87%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2021-09-28T01:39:31.000Z" itemprop="datePublished">2021-09-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/28/vue3%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8fabric%E5%8F%8A%E6%9C%AC%E5%9C%B0%E8%B0%83%E7%94%A8json%E6%96%87%E4%BB%B6/">vue3中如何使用fabric及本地调用json文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="vue工程中使用Fabric-js库"><a href="#vue工程中使用Fabric-js库" class="headerlink" title="vue工程中使用Fabric.js库"></a>vue工程中使用Fabric.js库</h4><h6 id="（1）构建"><a href="#（1）构建" class="headerlink" title="（1）构建"></a>（1）构建</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install fabric</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="（2）安装后打开-main-js-文件，添加如下代码将其引入"><a href="#（2）安装后打开-main-js-文件，添加如下代码将其引入" class="headerlink" title="（2）安装后打开 main.js 文件，添加如下代码将其引入"></a>（2）安装后打开 <strong>main.js</strong> 文件，添加如下代码将其引入</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">v2：<span class="keyword">import</span> &#123; fabric &#125; <span class="keyword">from</span> ‘fabric<span class="string">&#x27;  Vue.use(fabric);</span></span><br><span class="line"><span class="string">v3：import &#123; createApp &#125; from &#x27;</span>vue<span class="string">&#x27;</span></span><br><span class="line"><span class="string">	import App from &#x27;</span>./App.vue<span class="string">&#x27;</span></span><br><span class="line"><span class="string">	import &#123; fabric &#125; from &#x27;</span>fabric<span class="string">&#x27;</span></span><br><span class="line"><span class="string">	const app = createApp(App)</span></span><br><span class="line"><span class="string">	app.mount(&#x27;</span>#app<span class="string">&#x27;)</span></span><br><span class="line"><span class="string">	app.use(fabric)</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="（3）具体使用方法"><a href="#（3）具体使用方法" class="headerlink" title="（3）具体使用方法"></a>（3）具体使用方法</h6><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6939153638413565959">https://juejin.cn/post/6939153638413565959</a></p>
+<h4 id="vue3中获取本地json数据"><a href="#vue3中获取本地json数据" class="headerlink" title="vue3中获取本地json数据"></a>vue3中获取本地json数据</h4><p>import json from ‘./data.json’</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/28/vue3%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8fabric%E5%8F%8A%E6%9C%AC%E5%9C%B0%E8%B0%83%E7%94%A8json%E6%96%87%E4%BB%B6/" data-id="cku3ewxol00002sm14bst32na" data-title="vue3中如何使用fabric及本地调用json文件" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hexo如何上传文章" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/09/27/hexo%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0/" class="article-date">
@@ -423,6 +469,10 @@
       <ul>
         
           <li>
+            <a href="/2021/09/28/vue3%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8fabric%E5%8F%8A%E6%9C%AC%E5%9C%B0%E8%B0%83%E7%94%A8json%E6%96%87%E4%BB%B6/">vue3中如何使用fabric及本地调用json文件</a>
+          </li>
+        
+          <li>
             <a href="/2021/09/27/hexo%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0/">hexo如何上传文章</a>
           </li>
         
@@ -436,10 +486,6 @@
         
           <li>
             <a href="/2021/09/24/Mvvc/">Mvvc</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/24/hello-world/">Hello World</a>
           </li>
         
       </ul>
